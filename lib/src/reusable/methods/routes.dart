@@ -1,3 +1,4 @@
+import 'package:aco/src/screens/forget_pass.dart';
 import 'package:aco/src/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,10 @@ class Routes{
         MaterialPageRoute(builder: ((context) => const LoginScreen())));
   }
 
-  goToSP() {
+  goToForgotPass() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: ((context) => const SplashScreen())));
+        MaterialPageRoute(builder: ((context) => const ForgetPassScreen())));
   }
+
+  
 }

@@ -40,6 +40,8 @@ class MyDialog {
         );
       })
       );
+      await Future.delayed(Duration(seconds: 2));
+      Navigator.pop(context);
     
     
   }
@@ -79,8 +81,41 @@ class MyDialog {
         );
       })
       );
-    
-    
+  }
+
+  Future<void> SuccessfullySent() async{
+    return showDialog(
+      context: context, 
+      builder: ((context) {
+        return AlertDialog(
+          
+          contentPadding: EdgeInsets.all(10),
+          iconPadding: EdgeInsets.only(top: 10),
+          icon: Icon(
+            Icons.send_rounded,
+            size: 100,
+            color: Theme.of(context).primaryColor,
+          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: Container(
+            height: 80,
+            decoration: BoxDecoration(
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const <Widget>[
+                  Text(
+                    'We have sent an email to your address, please check your mailbox',
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      })
+      );
   }
 
 }

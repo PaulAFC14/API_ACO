@@ -25,8 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final formKey = GlobalKey<FormState>();
 
-  late final userController = TextEditingController();
-  late final passController = TextEditingController();
+  final userController = TextEditingController();
+  final passController = TextEditingController();
 
   Color userColor = Color.fromARGB(255, 233, 233, 233);
   Color passColor = Color.fromARGB(255, 233, 233, 233);
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.zero,
                         child: TextButton(
                           style: TextButton.styleFrom(primary: Colors.black),
-                          onPressed: () {},//(() => Routes(context).goToForgetPass()),
+                          onPressed: (() => Routes(context).goToForgotPass()),
                           child: const Text('Forget Password?',
                               textAlign: TextAlign.right,
                               style: TextStyle(fontWeight: FontWeight.w600)),
@@ -108,12 +108,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 50,),
                       RoundedButton(
                         backgroundColor: Theme.of(context).primaryColor, 
-                        color: Colors.white, txt: 'Sign in', height: 65, width: 0)
-                        .TextButton(context, onPressed: test/*(() => Routes(context).goToLogin())*/, fontSize: 18),
+                        color: Colors.white, txt: 'Sign in', height: 60, width: 0)
+                        .TextButton(context, onPressed: goToLogin, fontSize: 18),
                       SizedBox(height: 20),
                       RoundedButton(
                         backgroundColor: Theme.of(context).primaryColorDark, 
-                        color: Colors.white, txt: 'Sign in with Google', height: 65, width: 0)
+                        color: Colors.white, txt: 'Sign in with Google', height: 60, width: 0)
                         .ImgTextButton(context, onPressed: (() => Routes(context).goToLogin()), fontSize: 18, path: 'assets/img/google.png'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
             )));
   }
 
-  test(){
+  goToLogin(){
     user = Filters().getInputValue(userController);
     pass = Filters().getInputValue(passController);
 
@@ -147,12 +147,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
     List<String> colecctcion = [user, pass];
     if(Filters().checkColection(colecctcion: colecctcion)){
-      Login();
+      login();
     }
 
   }
 
-  Future<void> Login() async {
+  Future<void> login() async {
     var request = http.MultipartRequest('POST', Uri.parse('https://crud.jonathansoto.mx/api/login'));
     request.fields.addAll({
       'email': user,
@@ -167,13 +167,17 @@ class _LoginScreenState extends State<LoginScreen> {
       MyDialog(context).SuccessfulLogin();
       
       Future.delayed(Duration(seconds: 3)).then((value) {
-        Routes(context).goToSP();
+        Navigator.pop(context);
       });
       
     }
     else {
       print(response.reasonPhrase);
       MyDialog(context).LoginFailed();
+
+      Future.delayed(Duration(seconds: 2)).then((value) {
+        Navigator.pop(context);
+      });
       
     }
   }
