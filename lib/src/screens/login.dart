@@ -1,7 +1,8 @@
-
+import 'dart:convert';
 import 'dart:ffi';
 
-import 'package:aco/src/reusable/widgets/dialogs.dart';
+import 'package:aco/src/reusable/methods/get.dart';
+import 'package:aco/src/reusable/objects/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:aco/src/reusable/methods/filters.dart';
 import 'package:aco/src/reusable/widgets/input_text.dart';
@@ -12,7 +13,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../reusable/methods/routes.dart';
-import '../reusable/widgets/roundedButton.dart';
+import '../reusable/widgets/Win/dialogs.dart';
+import '../reusable/widgets/Win/roundedButton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -22,7 +24,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final formKey = GlobalKey<FormState>();
 
   final userController = TextEditingController();
@@ -30,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Color userColor = Color.fromARGB(255, 233, 233, 233);
   Color passColor = Color.fromARGB(255, 233, 233, 233);
-  
+
   String user = '';
   String pass = '';
 
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text('Welcome Back!',
                                 style: TextStyle(fontSize: 24)),
                           ),
-              
+
                           //INSTRUCTION TEXT
                           Padding(
                             padding: EdgeInsets.only(bottom: 5.0),
@@ -74,25 +75,31 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 50,
                       ),
                       Form(
-                        key: formKey,
-                        child: Column(
-                          children: <Widget>[
-                            InputText()
-                            .generateInputForm(context,controller: userController,hide: false, hint: 'Email or Phone Number', width: 0, 
-                              color: userColor
-                            ),
-                            SizedBox(height: 5),
-                            InputText().EmptyLabel(context, label: 'Missing email or phone', active: emptyUser),
-                            SizedBox(height: 20),
-                            InputText()
-                            .generateInputForm(context,controller: passController,hide: true, hint: 'Password', width: 0,
-                              color: passColor
-                            ),
-                            SizedBox(height: 5),
-                            InputText().EmptyLabel(context, label: 'Missing password', active: emptyPass),
-                          ],
-                        )
-                      ),
+                          key: formKey,
+                          child: Column(
+                            children: <Widget>[
+                              InputText().generateInputForm(context,
+                                  controller: userController,
+                                  hide: false,
+                                  hint: 'Email or Phone Number',
+                                  width: 0,
+                                  color: userColor),
+                              SizedBox(height: 5),
+                              InputText().EmptyLabel(context,
+                                  label: 'Missing email or phone',
+                                  active: emptyUser),
+                              SizedBox(height: 20),
+                              InputText().generateInputForm(context,
+                                  controller: passController,
+                                  hide: true,
+                                  hint: 'Password',
+                                  width: 0,
+                                  color: passColor),
+                              SizedBox(height: 5),
+                              InputText().EmptyLabel(context,
+                                  label: 'Missing password', active: emptyPass),
+                            ],
+                          )),
                       Container(
                         width: double.infinity,
                         alignment: Alignment.centerLeft,
@@ -105,16 +112,29 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: TextStyle(fontWeight: FontWeight.w600)),
                         ),
                       ),
-                      SizedBox(height: 50,),
-                      RoundedButton(
-                        backgroundColor: Theme.of(context).primaryColor, 
-                        color: Colors.white, txt: 'Sign in', height: 60, width: 0)
-                        .TextButton(context, onPressed: goToLogin, fontSize: 18),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      WinRoundedButton(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              color: Colors.white,
+                              txt: 'Sign in',
+                              height: 60,
+                              width: 0)
+                          .TextButton(context,
+                              onPressed: goToLogin, fontSize: 18),
                       SizedBox(height: 20),
-                      RoundedButton(
-                        backgroundColor: Theme.of(context).primaryColorDark, 
-                        color: Colors.white, txt: 'Sign in with Google', height: 60, width: 0)
-                        .ImgTextButton(context, onPressed: (() => Routes(context).goToLogin()), fontSize: 18, path: 'assets/img/google.png'),
+                      WinRoundedButton(
+                              backgroundColor:
+                                  Theme.of(context).primaryColorDark,
+                              color: Colors.white,
+                              txt: 'Sign in with Google',
+                              height: 60,
+                              width: 0)
+                          .ImgTextButton(context,
+                              onPressed: (() => Routes(context).goToLogin()),
+                              fontSize: 18,
+                              path: 'assets/img/google.png'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -122,8 +142,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextButton(
                             style: TextButton.styleFrom(
                                 primary: Theme.of(context).primaryColor),
-                            onPressed: () {}, //(() => Routes(context).goToSignUp()),
-                            child: Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold),),
+                            onPressed:
+                                () {}, //(() => Routes(context).goToSignUp()),
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           )
                         ],
                       )
@@ -134,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
             )));
   }
 
-  goToLogin(){
+  goToLogin() {
     user = Filters().getInputValue(userController);
     pass = Filters().getInputValue(passController);
 
@@ -146,43 +170,45 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     List<String> colecctcion = [user, pass];
-    if(Filters().checkColection(colecctcion: colecctcion)){
+    if (Filters().checkColection(colecctcion: colecctcion)) {
       login();
     }
-
   }
 
   Future<void> login() async {
-    var request = http.MultipartRequest('POST', Uri.parse('https://crud.jonathansoto.mx/api/login'));
-    request.fields.addAll({
-      'email': user,
-      'password': pass
-    });
-
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('https://crud.jonathansoto.mx/api/login'));
+    request.fields.addAll({'email': user, 'password': pass});
 
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
-      MyDialog(context).SuccessfulLogin();
-      
-      Future.delayed(Duration(seconds: 3)).then((value) {
+      List<String> data = Get().userData(await response.stream.bytesToString());
+      for (int i = 0; i < data.length; i++) {
+        print(data[i]);
+      }
+
+      User user = User(
+          name: data[0],
+          lastname: data[1],
+          email: data[2],
+          phone: data[3],
+          token: data[4]);
+
+      WinDialog(context).Welcome(user.getName());
+
+      /*Future.delayed(Duration(seconds: 3)).then((value) {
         Navigator.pop(context);
-      });
-      
-    }
-    else {
+      });*/
+    } else {
       print(response.reasonPhrase);
-      MyDialog(context).LoginFailed();
+      WinDialog(context).LoginFailed();
 
       Future.delayed(Duration(seconds: 2)).then((value) {
         Navigator.pop(context);
       });
-      
     }
   }
-
-  
 
   @override
   void dispose() {
@@ -191,5 +217,4 @@ class _LoginScreenState extends State<LoginScreen> {
     userController.dispose();
     passController.dispose();
   }
-  
 }

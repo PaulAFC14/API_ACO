@@ -1,5 +1,4 @@
 import 'package:aco/src/reusable/methods/routes.dart';
-import 'package:aco/src/reusable/widgets/roundedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -19,9 +18,7 @@ class _TesterState extends State<Tester> {
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
         child: Center(
           child: Column(
-            children: <Widget>[
-              
-            ],
+            children: <Widget>[],
           ),
         ),
       ),
