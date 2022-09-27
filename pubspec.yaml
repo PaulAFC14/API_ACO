@@ -64,50 +64,13 @@ flutter:
   assets:
       - assets/img/splash1.jpeg
       - assets/img/google.png
-      - assets/img/progress.gif
-      - assets/img/progress2.gif
       - assets/img/load_google.gif
       - assets/img/forgot_guy.png
-      #- assets/img/swp_banner/i4.jpg
-      #- assets/img/swp_banner/i6.jpg
-      - assets/img/swp_banner/i5.jpg
-      - assets/img/cr7.png
+      - assets/img/swp_banner/i1.jpg
+      - assets/img/swp_banner/i2.jpg
+      - assets/img/swp_banner/i3.jpg
       - assets/img/mc.png
       - assets/img/visa.png
-
-      - assets/img/products/cat_sofa/item_sofa1/img1a.png
-      - assets/img/products/cat_sofa/item_sofa1/img2a.png
-      - assets/img/products/cat_sofa/item_sofa1/img3a.png
-      - assets/img/products/cat_sofa/item_sofa1/img4b.jpg
-      - assets/img/products/cat_sofa/item_sofa2/img1a.png
-      - assets/img/products/cat_sofa/item_sofa2/img2a.png
-      - assets/img/products/cat_sofa/item_sofa3/img1a.png
-      - assets/img/products/cat_sofa/item_sofa3/img2a.png
-      - assets/img/products/cat_sofa/item_sofa3/img3a.png
-
-      - assets/img/products/cat_table/item_table1/img1a.png
-      - assets/img/products/cat_table/item_table1/img2b.jpg
-      - assets/img/products/cat_table/item_table1/img3b.jpg
-      - assets/img/products/cat_table/item_table2/img1a.png
-      - assets/img/products/cat_table/item_table2/img2b.jpg
-      - assets/img/products/cat_table/item_table2/img3b.jpg
-
-      - assets/img/products/cat_dining/item_dining1/img1a.png
-      - assets/img/products/cat_dining/item_dining1/img2a.png
-      - assets/img/products/cat_dining/item_dining1/img3b.jpg
-      - assets/img/products/cat_dining/item_dining2/img1a.png
-      - assets/img/products/cat_dining/item_dining2/img2a.png
-      - assets/img/products/cat_dining/item_dining2/img3a.png
-
-      - assets/img/products/cat_bed/item_bed1/img1a.png
-      - assets/img/products/cat_bed/item_bed1/img2b.jpg
-      - assets/img/products/cat_bed/item_bed1/img3b.jpg
-      - assets/img/products/cat_bed/item_bed1/img4b.jpg
-      - assets/img/products/cat_bed/item_bed2/img1a.png
-      - assets/img/products/cat_bed/item_bed2/img1b.png
-      - assets/img/products/cat_bed/item_bed2/img2b.jpg
-      - assets/img/products/cat_bed/item_bed2/img3b.jpg
-
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
