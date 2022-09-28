@@ -1,23 +1,23 @@
 class Product {
-  late int id;
+  late String id;
   late String name;
   late String description;
   late String features;
   late String cover;
 
-  late int id_brand;
+  late String id_brand;
   late String name_brand;
   late String desc_brand;
 
-  late int id_category;
+  late String id_category;
   late String name_cat;
   late String desc_cat;
 
 
-  late int stock;
-  late int stock_min;
-  late int stock_max;
-  late double amount;
+  late String stock;
+  late String stock_min;
+  late String stock_max;
+  late String amount;
   
   
 
@@ -39,7 +39,7 @@ class Product {
     required this.amount,
   });
 
-  int getId(){
+  String getId(){
     return id;
   }
 
@@ -51,23 +51,23 @@ class Product {
     return cover;
   }
 
-  int getStock() {
+  String getStock() {
     return stock;
   }
 
-  int getStockMin() {
+  String getStockMin() {
     return stock_min;
   }
 
-  int getStockMax() {
+  String getStockMax() {
     return stock_max;
   }
 
-  double getAmount() {
+  String getAmount() {
     return amount;
   }
 
-  int getIdCategory() {
+  String getIdCategory() {
     return id_category;
   }
 
@@ -79,7 +79,7 @@ class Product {
     return features;
   }
 
-  int getIdBrand(){
+  String getIdBrand(){
     return id_brand;
   }
 

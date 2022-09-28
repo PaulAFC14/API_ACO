@@ -274,21 +274,21 @@ class Get {
     print('DescCat: $desc_cat');
 
     Product product = Product(
-      id: int.parse(id), 
+      id: id, 
       name: name, 
       cover: cover, 
       description: description, 
       features: features, 
-      id_brand: int.parse(id_brand), 
+      id_brand: id_brand, 
       name_brand: name_brand, 
       desc_brand: desc_brand, 
-      id_category: int.parse(id_cat), 
+      id_category: id_cat, 
       name_cat: name_cat, 
       desc_cat: desc_cat, 
-      stock: int.parse(stock), 
-      stock_min: int.parse(stock_min), 
-      stock_max: int.parse(stock_max), 
-      amount: double.parse(amount));
+      stock: stock, 
+      stock_min: stock_min, 
+      stock_max: stock_max, 
+      amount: amount);
 
     return product;
 

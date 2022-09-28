@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:aco/src/reusable/objects/product.dart';
 import 'package:aco/src/reusable/widgets/axisError.dart';
 import 'package:aco/src/reusable/widgets/bottomNavBar.dart';
@@ -7,6 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:http/http.dart' as http;
 
 import '../reusable/objects/stock.dart';
 import '../reusable/objects/user.dart';
@@ -28,6 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Stock(user);
+    
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     double vh = height / 100;
@@ -53,8 +58,10 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 ElevatedButton(
-                  onPressed: test, 
-                  child: Text('Show'))
+                  onPressed:() {}, 
+                  child: Text('Show')),
+
+                
               ],
             ),
           ),
@@ -65,7 +72,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void test() {
-    Stock(user);
-  }
+  
+  
+  
 }
+
+/*
+Map<String, dynamic> p = json.decode(await response.stream.bytesToString());
+      print('${p['id']}');*/
