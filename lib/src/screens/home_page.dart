@@ -1,3 +1,4 @@
+import 'package:aco/src/reusable/objects/product.dart';
 import 'package:aco/src/reusable/widgets/axisError.dart';
 import 'package:aco/src/reusable/widgets/bottomNavBar.dart';
 import 'package:aco/src/reusable/widgets/headers.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../reusable/objects/stock.dart';
 import '../reusable/objects/user.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,8 +21,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   late User user;
   _HomePageState(this.user);
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +48,13 @@ class _HomePageState extends State<HomePage> {
                       autoPlayInterval: Duration(seconds: 2)),
                   itemCount: 3,
                   itemBuilder: (context, index, realIndex) {
-                    return PromoCard(context).Home(vh, vw);
+                    return PromoCard(context).Home(vh, vw, user);
                   },
                 ),
+
+                ElevatedButton(
+                  onPressed: test, 
+                  child: Text('Show'))
               ],
             ),
           ),
@@ -55,5 +63,9 @@ class _HomePageState extends State<HomePage> {
     } else {
       return AxisError(context).Build();
     }
+  }
+
+  void test() {
+    Stock(user);
   }
 }

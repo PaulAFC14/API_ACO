@@ -83,10 +83,13 @@ class WinDialog {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(
-                      Icons.check_circle_rounded,
-                      size: 100,
-                      color: Colors.green,
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle
+                      ),
+                      child: Image.asset('assets/img/check-mark-verified.gif'),
                     ),
                     Text(
                       'Welcome back $name!',
@@ -109,17 +112,19 @@ class WinDialog {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             content: Container(
-              height: 150,
+              height: 125,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
-                    Icon(
-                      Icons.check_circle_rounded,
-                      size: 100,
-                      color: Colors.green,
+                  children: <Widget>[
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle
+                      ),
+                      child: Image.asset('assets/img/check-mark-verified.gif'),
                     ),
-                    SizedBox(height: 10),
                     Text(
                       'Successfull Login',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -141,17 +146,19 @@ class WinDialog {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             content: Container(
-              height: 150,
+              height: 125,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
-                    Icon(
-                      Icons.check_circle_rounded,
-                      size: 100,
-                      color: Colors.green,
+                  children: <Widget>[
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle
+                      ),
+                      child: Image.asset('assets/img/check-mark-verified.gif'),
                     ),
-                    SizedBox(height: 10),
                     Text(
                       'Successfully registered',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -173,20 +180,22 @@ class WinDialog {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             content: Container(
-              height: 150,
+              height: 125,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(
-                      Icons.send_rounded,
-                      size: 100,
-                      color: Theme.of(context).primaryColor,
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle
+                      ),
+                      child: Image.asset('assets/img/check-mark-verified.gif'),
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'We have sent an email to your address, please check your mailbox',
-                      textAlign: TextAlign.center,
+                    Text(
+                      'Email sent',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
                 ),

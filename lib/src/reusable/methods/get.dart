@@ -1,4 +1,315 @@
+import 'package:aco/src/reusable/objects/product.dart';
+import 'package:aco/src/reusable/objects/user.dart';
+
+
 class Get {
+
+  Product productData(String data){
+
+    print('-------------------------');
+    
+    int a = 0;
+    int b = 0;
+    int control = 0;
+    
+    a = data.lastIndexOf('"data"') + 13;
+    //Id
+    String id = '';
+    control = 0;
+
+    do {
+      if(data[a] != ','){
+        id += data[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+
+    a += 9;
+    //Name
+    String name = '';
+    control = 0;
+
+    do {
+      if(data[a] != '"'){
+        name += data[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    
+    //Description and Features
+    String desc_feat = '';
+    b = data.lastIndexOf('"features"');
+
+    for(int i = a; i < b; i++){
+      desc_feat += data[i];
+    }
+
+    a = desc_feat.lastIndexOf('"description') + 15;
+    //Description
+    String description = '';
+    control = 0;
+
+    do {
+      if(desc_feat[a] != '"'){
+        description += desc_feat[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = data.lastIndexOf('"features"') + 12;
+    //Features
+    String features = '';
+    control = 0;
+
+    do {
+      if(data[a] != '"'){
+        features += data[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = data.lastIndexOf('"presentations"');
+    String presents = '';
+    
+    for(int i = a; i < data.length; i++){
+      presents += data[i];
+    }
+
+    a = presents.lastIndexOf('"cover"') + 10;
+    //Cover
+    String cover = 'https://crud.jonathansoto.mx/storage/products/';
+    control = 0;
+
+    do {
+      if(presents[a] != '"'){
+        cover += presents[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = presents.lastIndexOf('"amount"') + 9;
+    //Amount
+    String amount = '';
+    control = 0;
+
+    do {
+      if(presents[a] != '.'){
+        amount += presents[a];
+        a++;
+      }else{
+        amount += presents[a] + presents[a + 1] + presents[a +2];
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = presents.lastIndexOf('"stock"') + 8;
+    //Stock
+    String stock = '';
+    control = 0;
+
+    do {
+      if(presents[a] != '"'){
+        stock += presents[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = presents.lastIndexOf('"stock_min"') + 12;
+    //StockMin
+    String stock_min = '';
+    control = 0;
+
+    do {
+      if(presents[a] != '"'){
+        stock_min += presents[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = presents.lastIndexOf('"stock_max"') + 12;
+    //StockMin
+    String stock_max = '';
+    control = 0;
+
+    do {
+      if(presents[a] != '"'){
+        stock_max += presents[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = data.lastIndexOf('"brand"');
+    b = data.lastIndexOf('"tags"');
+    //Brand
+    String brand = '';
+    for(int i = a; i < b; i++){
+      brand += data[i];
+    }
+
+    a = brand.lastIndexOf('"id"') + 5;
+    //IdBrand
+    String id_brand = '';
+    control = 0;
+
+    do {
+      if(brand[a] != ','){
+        id_brand = brand[a];
+        a ++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = brand.lastIndexOf('"name"') + 8;
+    //NameBrand
+    String name_brand = '';
+    control = 0;
+
+    do {
+      if(brand[a] != '"'){
+        name_brand += brand[a];
+        a ++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = brand.lastIndexOf('"description"') + 15;
+    //DescBrand
+    String desc_brand = '';
+    control = 0;
+
+    do {
+      if(brand[a] != '"'){
+        desc_brand += brand[a];
+        a ++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = data.lastIndexOf('"categories"');
+    b = data.lastIndexOf('"providers"');
+    String cats = '';
+
+    for(int i = a; i < b; i++){
+      cats += data[i];
+    }
+
+     a = cats.lastIndexOf('"id"') + 5;
+    //IdCat
+    String id_cat = '';
+    control = 0;
+
+    do {
+      if(cats[a] != ','){
+        id_cat += cats[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+    a = cats.lastIndexOf('"name"') + 8;
+    //NameCat
+    String name_cat= '';
+    control = 0;
+
+    do {
+      if(cats[a] != '"'){
+        name_cat += cats[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+   a = cats.lastIndexOf('"description"') + 15;
+    //NameCat
+    String desc_cat= '';
+    control = 0;
+
+    do {
+      if(cats[a] != '"'){
+        desc_cat += cats[a];
+        a++;
+      }else{
+        control = 1;
+      }
+    } while (control == 0);
+
+
+    print('Id: $id');
+    print('Name: $name');
+    print('Description: $description');
+    print('Features: $features');
+    print('Cover: $cover');
+    print('Amount: $amount');
+    print('Stock: $stock');
+    print('Stock_min: $stock_min');
+    print('Stock_max: $stock_max');
+    print('IdBrand: $id_brand');
+    print('NameBrand: $name_brand');
+    print('NameBrand: $desc_brand');
+    print('IdCat: $id_cat');
+    print('NameCat: $name_cat');
+    print('DescCat: $desc_cat');
+
+    Product product = Product(
+      id: int.parse(id), 
+      name: name, 
+      cover: cover, 
+      description: description, 
+      features: features, 
+      id_brand: int.parse(id_brand), 
+      name_brand: name_brand, 
+      desc_brand: desc_brand, 
+      id_category: int.parse(id_cat), 
+      name_cat: name_cat, 
+      desc_cat: desc_cat, 
+      stock: int.parse(stock), 
+      stock_min: int.parse(stock_min), 
+      stock_max: int.parse(stock_max), 
+      amount: double.parse(amount));
+
+    return product;
+
+    
+
+
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   List<String> userData(String data) {
     List<String> userData = [];
     int a = 0;

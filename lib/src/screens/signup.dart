@@ -194,7 +194,7 @@ class _SignUpState extends State<SignUp> {
                   height: 7 * vh,
                   width: 0)
               .ImgTextButton(context,
-                  onPressed: (() => Stock()),
+                  onPressed: (() {}),
                   fontSize: 2 * vh,
                   path: 'assets/img/google.png'),
           Row(

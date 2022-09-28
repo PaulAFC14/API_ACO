@@ -75,7 +75,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                         hide: false,
                         hint: 'Email',
                         width: 0,
-                        height: 6.8 * vh,
+                        height: 6 * vh,
                         marginH: 8 * vw,
                         fontsize: 2 * vh,
                         color: mailColor,
@@ -124,6 +124,10 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
     if (response.statusCode == 200) {
       print(await response.stream.bytesToString());
       WinDialog(context).SuccessfullySent();
+
+      Future.delayed(Duration(seconds: 2)).then((value) {
+        Routes(context).goToLogin();
+      });
     } else {
       print(response.reasonPhrase);
     }

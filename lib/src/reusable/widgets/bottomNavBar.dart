@@ -9,6 +9,7 @@ class BottomNavBar {
     double vh = hg / 100;
 
     return Container(
+      margin: EdgeInsets.only(bottom: 1.5*vh),
       width: double.infinity,
       height: 6 * vh,
       child: Row(
@@ -59,7 +60,7 @@ class BottomNavBar {
 
           //User
           IconButton(
-              onPressed: () => Routes(context).goToLogin(),
+              onPressed: () => Routes(context).goToUserPage(user: user),
               icon: Icon(Icons.person_rounded,
                   color: page == 4
                       ? Theme.of(context).primaryColor

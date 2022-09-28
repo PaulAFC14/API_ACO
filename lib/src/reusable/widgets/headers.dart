@@ -1,4 +1,7 @@
+import 'package:aco/src/reusable/methods/routes.dart';
 import 'package:flutter/material.dart';
+
+import '../objects/user.dart';
 
 class Headers {
   late BuildContext context;
@@ -49,6 +52,20 @@ class Headers {
           icon: Icon(Icons.candlestick_chart_outlined)
         ),
       ],
+    );
+  }
+
+  AppBar CustomBack(String title, User user){
+    return AppBar(
+      backgroundColor: Colors.white10,
+      elevation: 0,
+      foregroundColor: Colors.black,
+      leading: IconButton(
+        onPressed: () => Routes(context).goToHomePage(user: user), 
+        icon: Icon(Icons.arrow_back_ios_new_rounded)
+      ),
+      centerTitle: true,
+      title: Text(title),
     );
   }
 

@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 height: 7 * vh,
                                 width: 0)
                             .ImgTextButton(context,
-                                onPressed: (() => Stock()),
+                                onPressed: (() {}),
                                 fontSize: 2 * vh,
                                 path: 'assets/img/google.png'),
                         Row(
@@ -223,7 +223,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       WinDialog(context).Welcome(userData.getName());
 
-      Future.delayed(Duration(seconds: 2)).then((value) {
+      Future.delayed(Duration(seconds: 3)).then((value) {
         Navigator.pop(context);
         Routes(context).goToSwiper(user: userData);
       });

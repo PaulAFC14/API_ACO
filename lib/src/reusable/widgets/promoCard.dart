@@ -1,13 +1,16 @@
 import 'dart:math';
 
+import 'package:aco/src/reusable/objects/stock.dart';
 import 'package:aco/src/reusable/widgets/roundedButton.dart';
 import 'package:flutter/material.dart';
+
+import '../objects/user.dart';
 
 class PromoCard{
   late BuildContext context;
   PromoCard(this.context);
 
-  Widget Home(double vh, double vw){
+  Widget Home(double vh, double vw, User user){
     Random random = Random();
     late int randomNumber = random.nextInt(66) + 10;
 
@@ -36,7 +39,7 @@ class PromoCard{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      width: 42*vw,
+                      width: 44*vw,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -48,14 +51,14 @@ class PromoCard{
                                   '$randomNumber',
                                   style: TextStyle(
                                     color: Theme.of(context).primaryColor,
-                                    fontSize: 4*vh,
+                                    fontSize: 3.25*vh,
                                     fontWeight: FontWeight.bold
                                   ),
                                 ),
                                 Text(
                                   '% discount',
                                   style: TextStyle(
-                                    fontSize: 2.75*vh,
+                                    fontSize: 2.5*vh,
                                   ),
                                 )
                               ],
@@ -70,7 +73,7 @@ class PromoCard{
                       ),
                     ),
                     Container(
-                      width: 42*vw,
+                      width: 40*vw,
                       height: 22.9*vh,
                       color: Theme.of(context).backgroundColor,
                       child: Center(child: Text('ImageProduct'),),

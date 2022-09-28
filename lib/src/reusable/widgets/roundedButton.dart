@@ -63,18 +63,67 @@ class WinRoundedButton extends Widget {
           width: width == 0 || width >= wd ? double.infinity : width,
           height: height,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              icon,
-              SizedBox(width: fontSize),
-              Text(
-                txt,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: color, fontSize: fontSize),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    icon,
+                    SizedBox(width: fontSize),
+                    Text(
+                      txt,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: color, fontSize: fontSize,
+                      fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  ],
+                ),
               ),
+              Icon(Icons.arrow_forward_ios_rounded, color: color,)
+              
             ],
           ),
         ));
+  }
+
+  Widget SingleIconTextButton(BuildContext context,
+      {required onPressed(), required double fontSize, required Icon icon}) {
+    double wd = MediaQuery.of(context).size.width;
+    double vw = wd/100;
+    wd = wd - 4*vw;
+
+    return Container(
+      margin: width == 0
+      ? EdgeInsets.zero
+      : EdgeInsets.symmetric(horizontal: (wd-width)/2)
+      ,
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              elevation: 0,
+              primary: backgroundColor,
+              textStyle: TextStyle(color: color),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(height))),
+          onPressed: onPressed,
+          child: Container(
+            width: width == 0 || width >= wd ? double.infinity : width,
+            height: height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                icon,
+                Text(
+                  txt,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: color, fontSize: fontSize,
+                  fontWeight: FontWeight.w500
+                  ),
+                ),
+              ]
+            ),
+          )),
+    );
   }
 
   Widget ImgTextButton(BuildContext context,
